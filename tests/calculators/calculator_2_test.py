@@ -2,7 +2,7 @@ from typing import Dict, List
 
 from src.drivers.interfaces.driver_handler_interface import DriverHandlerInterface
 from src.drivers.numpy_handler import NumpyHandler
-from src.calculators.calculator_2 import Calculator_2
+from src.calculators.calculator_2 import Calculator2
 
 
 class MockRequest:
@@ -18,7 +18,7 @@ class MockDriverHandler(DriverHandlerInterface):
 # Integração entre NumpyHandler e Calculator2
 def test_calculate_integration():
     mock_request = MockRequest({"numbers": [2.12, 4.62, 1.32]})
-    calculator_2 = Calculator_2(NumpyHandler())
+    calculator_2 = Calculator2(NumpyHandler())
     formatted_response = calculator_2.calculate(mock_request)
 
     assert isinstance(formatted_response, dict)
@@ -28,7 +28,7 @@ def test_calculate_integration():
 def test_calculate():
     mock_request = MockRequest({"numbers": [2.12, 4.62, 1.32]})
     driver = MockDriverHandler()
-    calculator_2 = Calculator_2(driver)
+    calculator_2 = Calculator2(driver)
     formatted_response = calculator_2.calculate(mock_request)
 
     assert isinstance(formatted_response, dict)
